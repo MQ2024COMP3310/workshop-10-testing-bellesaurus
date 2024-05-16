@@ -5,7 +5,7 @@ from project.models import User
 from werkzeug.security import check_password_hash
 
 # CAUSING CONFLICT, DISORDER AND CHAOS
-# ANOTHER PUSH FOR SPITE
+# ANOTHER PUSH FOR FUCK YOU
 
 class TestWebApp(unittest.TestCase):
     def setUp(self):
