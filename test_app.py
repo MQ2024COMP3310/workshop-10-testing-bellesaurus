@@ -36,6 +36,16 @@ class TestWebApp(unittest.TestCase):
         response = self.client.get('/signup')
         assert response.status_code == 200
 
+    # Here I am inserting a comment. 
+    # May I interest you in a merge conflict?
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
     def test_no_access_to_profile(self):
         # TODO: Check that non-logged-in user should be redirected to /login
         response = self.client.get('/profile', follow_redirects = True)
