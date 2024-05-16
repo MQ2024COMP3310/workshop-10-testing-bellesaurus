@@ -37,7 +37,10 @@ class TestWebApp(unittest.TestCase):
 
     def test_no_access_to_profile(self):
         # TODO: Check that non-logged-in user should be redirected to /login
-        assert False
+        response = self.client.get('/profile', follow_redirects = True)
+        # assert response.status_code == 200
+        assert response.request.path == '/login'
+
 
     def test_register_user(self):
         response = self.client.post('/signup', data = {
@@ -78,10 +81,18 @@ class TestWebApp(unittest.TestCase):
             'name' : 'test user',
             'password' : 'test123'
         }, follow_redirects = True)
-        assert response.status_code == 200 
+        assert response.status_code == 200  
+        assert response.request.path == '/login'
 
     def test_xss_vulnerability(self):
         # TODO: Can we store javascript tags in the username field?
-        assert False
+        response = self.client.post('/signup', data = {
+            'email' : ' ',
+            'name' : '<script>alert()</script>',
+            'password' : '<script>alert()</script>'
+        }, follow_redirects = True)
+        assert response == 200
+        assert response.request.path == '/login'
 
 
+        # This is a new line of some sort - ZH
