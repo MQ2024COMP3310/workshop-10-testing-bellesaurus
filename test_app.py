@@ -37,7 +37,6 @@ class TestWebApp(unittest.TestCase):
         assert response.status_code == 200
 
     # Here I am inserting a comment. 
-    # May I interest you in a merge conflict? No thank you
     # 
     # 
     # 
